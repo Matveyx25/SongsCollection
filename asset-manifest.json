@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/SongsCollection/static/css/main.8c5ca68e.chunk.css",
+    "main.js": "/SongsCollection/static/js/main.c4ace104.chunk.js",
+    "main.js.map": "/SongsCollection/static/js/main.c4ace104.chunk.js.map",
+    "runtime-main.js": "/SongsCollection/static/js/runtime-main.176724b1.js",
+    "runtime-main.js.map": "/SongsCollection/static/js/runtime-main.176724b1.js.map",
+    "static/js/2.6e76a100.chunk.js": "/SongsCollection/static/js/2.6e76a100.chunk.js",
+    "static/js/2.6e76a100.chunk.js.map": "/SongsCollection/static/js/2.6e76a100.chunk.js.map",
+    "static/js/3.c9b48453.chunk.js": "/SongsCollection/static/js/3.c9b48453.chunk.js",
+    "static/js/3.c9b48453.chunk.js.map": "/SongsCollection/static/js/3.c9b48453.chunk.js.map",
+    "index.html": "/SongsCollection/index.html",
+    "static/css/main.8c5ca68e.chunk.css.map": "/SongsCollection/static/css/main.8c5ca68e.chunk.css.map",
+    "static/js/2.6e76a100.chunk.js.LICENSE.txt": "/SongsCollection/static/js/2.6e76a100.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/SongsCollection/static/media/gilroy-bold.b900325e.ttf",
+    "static/media/circles.60afb77e.png": "/SongsCollection/static/media/circles.60afb77e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.176724b1.js",
+    "static/js/2.6e76a100.chunk.js",
+    "static/css/main.8c5ca68e.chunk.css",
+    "static/js/main.c4ace104.chunk.js"
+  ]
+}
