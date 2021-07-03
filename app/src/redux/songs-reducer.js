@@ -21,6 +21,8 @@ const songsReducer = (state = initialState, action) => {
             return { ...state, song: action.song}
         case SET_COLLECTIONS:
             return { ...state, collections: action.collections}
+        case TOGGLE_IS_FETCHING:
+            return { ...state, isFetching: action.isFetching}
         default:
             return state
     }
@@ -29,7 +31,7 @@ const songsReducer = (state = initialState, action) => {
 // ACTION CREATOR
 
 export const setSongs = (songs) => ({ type: SET_SONGS, songs })
-export const setSong = (song) => ({ type: SET_SONG, songs})
+export const setSong = (song) => ({ type: SET_SONG, song})
 export const setCollections = (collections) => ({ type: SET_COLLECTIONS, collections })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 
@@ -39,24 +41,59 @@ export const requestSongs = () => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
 
-        let data = await songsAPI.getAllSongs()
+        let response = await songsAPI.getAllSongs()
+
+        dispatch(setSongs(response.data))
         dispatch(toggleIsFetching(false))
-        dispatch(setSongs(data.items))
+    }
+}
+
+export const requestThemeSongs = (themeId) => {
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+
+        let response = await songsAPI.getThemeSongs(themeId)
+        
+        dispatch(setSongs(response.data))
+        dispatch(toggleIsFetching(false))
     }
 }
 
 export const requestSong = (songId) => async (dispatch) => {
+    dispatch(toggleIsFetching(true))
     let response = await songsAPI.getSong(songId)
-        dispatch(setSong(response.data))
+    
+    dispatch(setSong(response.data))   
+    dispatch(toggleIsFetching(false)) 
 }
 
 export const requestCollections = () => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
-
-        let data = await songsAPI.getCollections()
+        let response = await songsAPI.getAllTheme()
+        
+        dispatch(setCollections(response.data))
         dispatch(toggleIsFetching(false))
-        dispatch(setCollections(data.items))
+    }
+}
+
+export const requestThemes = (themeId) => {
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+
+        let response = await songsAPI.getTheme(themeId)
+
+        dispatch(setSongs(response.data))
+        dispatch(toggleIsFetching(false))
+    }
+}
+
+export const searchSong = (text) => {
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        let response = await songsAPI.getSongFromText(text)
+        dispatch(setSongs(response.data))
+        dispatch(toggleIsFetching(false))
     }
 }
 

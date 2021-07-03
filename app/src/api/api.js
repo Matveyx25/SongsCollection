@@ -1,25 +1,25 @@
 import * as axios from 'axios'
 
 const instance = axios.create({
-    withCredentials: true, 
-    baseURL : 'https://social-network.samuraijs.com/api/1.0/', // need change base url 
-    headers: {"API-KEY" : "b93c13bf-3a25-43aa-aa7b-bce3a68057ff"} // and apikey if you have it 
+    // withCredentials: true, 
+    baseURL : 'http://localhost:8080/' // need change base url 
+    // headers: {"API-KEY" : "b93c13bf-3a25-43aa-aa7b-bce3a68057ff"} // and apikey if you have it 
 })
 
-export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10){
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-    },
-    getUnFollow(userId){
-        return instance.delete(`follow/${userId}`)
-    },
-    getFollow(userId){
-        return instance.post(`follow/${userId}`)
-    },
-    getProfile(userId){
-        return profileAPI.getProfile(userId)
-    },
-}
+// export const usersAPI = {
+//     getUsers(currentPage = 1, pageSize = 10){
+//         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+//     },
+//     getUnFollow(userId){
+//         return instance.delete(`follow/${userId}`)
+//     },
+//     getFollow(userId){
+//         return instance.post(`follow/${userId}`)
+//     },
+//     getProfile(userId){
+//         return profileAPI.getProfile(userId)
+//     },
+// }
 
 export const songsAPI = { // all quesion about songs and songs collection
     getAllSongs(){

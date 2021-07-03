@@ -1,0 +1,32 @@
+.number{
+    display: inline-block;
+    margin-right: 5px;
+}
+.songsWrapper{
+    padding: 20px 20px;
+    border-radius: 4px;
+    background: #F8F7F7;
+}
+.songsWrapper li{
+    list-style: none;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    transition: 0.2s;
+    color: #534747;
+}
+.songsWrapper li:hover{
+    background: rgba(0, 0, 0, 0.05);   
+}
+.songsWrapper li:not(:last-child){
+    border-bottom: 1px solid #C7C7C7;
+}
+.songsWrapper li a{
+    display: inline-block;
+    width: fit-content;
+    text-decoration: none;
+    color: #534747;
+    padding: 0;
+    margin: 0;
+}

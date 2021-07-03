@@ -1,9 +1,10 @@
 import React from 'react'
 import Song from './Song'
+import s from './Song.module.css'
 
-const Songs = props => {
-    return <ul>
-        {props.songs.map(u => <Song Song={u} key={u.id}/>)}
+const Songs = songs => {
+    return <ul className={s.songsWrapper}>
+        {songs.songs.map(u => <Song song={u} key={u.id}/>)}
      </ul>
 }
 

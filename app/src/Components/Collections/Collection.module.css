@@ -1,0 +1,30 @@
+.collectionWrapper{
+    padding: 0;
+    margin: 0;
+}
+
+.collectionWrapper li{
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    background: #f8f7f7;
+    list-style: none;
+    transition: 0.5s;
+}
+.collectionWrapper li:hover{
+    background: #d4d3d3;
+}
+.collectionWrapper li:not(:last-child){
+    margin-bottom: 4px;
+}
+.collectionWrapper li a{
+    text-decoration: none;
+    color: #736868;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.collectionWrapper li a svg{
+    width: 8px;
+}

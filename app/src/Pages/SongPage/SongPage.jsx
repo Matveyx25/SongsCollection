@@ -2,12 +2,13 @@ import React from 'react';
 import s from './SongPage.module.scss'
 
 
-const SongPage = song => {
-    return  <div>
-        <h1>{ song.title }, #{ song.id }</h1>
-        <p>{ song.text }</p>
-        <small>{ song.author }</small>
-    </div>
+const SongPage = props => {
+    return <div>
+            <h1 className={s.title}>{props.song.id}. {props.song.name}</h1>
+            <pre className={s.text}>{props.song.text}</pre>
+            {props.song.authors && <small className={s.author}>{props.song.authors}</small>}
+        </div>
+    
 }
 
 export default SongPage

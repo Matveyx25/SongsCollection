@@ -1,10 +1,25 @@
 import React from 'react';
-import BookPage from './BookPage';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { compose } from 'redux';
+import { getSong } from '../../redux/songs-selectors'
+import SongPage from '../SongPage/SongPage';
 
-const BookPageContainer = props => {
-    return (
-        <BookPage/>
-    )
+
+class BookPageContainer extends React.Component {
+    
+    render() {
+        return (
+            <SongPage song={this.props.song}/>
+        )
+    }
 }
 
-export default BookPageContainer
+let mapStateToProps = (state) => ({
+    song: getSong(state)
+})
+
+export default compose(
+    connect(mapStateToProps, null),
+    withRouter
+)(BookPageContainer)

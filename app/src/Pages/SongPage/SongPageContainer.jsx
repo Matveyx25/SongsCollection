@@ -1,41 +1,44 @@
-import React from 'react';
-import SongPage from './SongPage';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React from 'react'
+import SongPage from './SongPage'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { requestSong , toggleIsFetching} from '../../redux/songs-reducer'
+import { getSong , getFetching} from '../../redux/songs-selectors'
 import { compose } from 'redux';
+import Preloader from '../../Components/common/preloader/preloader'
+
 
 class SongPageContainer extends React.Component {
 
-    refreshProfile() {
-        let songId = this.props.match.params.userId
-        this.props.requestSong(songId)
-    }
 
     componentDidMount() {
-       this.refreshSong()
+        let songId = this.props.match.params.songId
+        this.props.requestSong(songId)
     }
 
     componentDidUpdate(prevProps , prevState , snapshot) {
         if(this.props.match.params.songId != prevProps.match.params.songId){
-            this.refreshSong()
+            let songId = this.props.match.params.userId
+            this.props.requestSong(songId)
+            console.log(songId);
         }
     }
-
+    
     render() {
-        return (
-            <SongPage song={...this.props.song}/>
-        )
+        return <>
+        {this.props.isFetching ? <Preloader/> : null}
+        <SongPage song={this.props.song}/>
+        </>
     }
 }
 
 
 let mapStateToProps = (state) => ({
-    song: state.songsPage.song
+    isFetching: getFetching(state),
+    song: getSong(state)
 })
 
 export default compose(
-    connect(mapStateToProps, { requestSong }),
+    connect(mapStateToProps, { requestSong , toggleIsFetching}),
     withRouter
 )(SongPageContainer)
-
-export default SongPageContainer
