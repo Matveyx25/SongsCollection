@@ -1,9 +1,7 @@
 import * as axios from 'axios'
 
 const instance = axios.create({
-    // withCredentials: true, 
-    baseURL : 'http://localhost:8080/' // need change base url 
-    // headers: {"API-KEY" : "b93c13bf-3a25-43aa-aa7b-bce3a68057ff"} // and apikey if you have it 
+    baseURL : 'http://213.139.208.216/' 
 })
 
 // export const usersAPI = {
