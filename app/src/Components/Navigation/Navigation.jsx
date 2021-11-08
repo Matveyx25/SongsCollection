@@ -7,24 +7,26 @@ const Navigation = props => {
     return (
         <div className={s.wrapper}>
             <ul>
-                <li><NavLink to={'/'} exact activeClassName={s.active}>
-                    <img src="./icons/Home.png" alt=""/>
-                    <span className={s.line}></span>
-                    </NavLink></li>
-                <li><NavLink to={'/book'} activeClassName={s.active}>
-                    <img src="./icons/Book.png" alt=""/>
-                    <span className={s.line}></span>
-                    </NavLink></li>
-                {/* <li><NavLink to={'/add'}>
-                    <img src="/icons/Add.png" activeClassName={s.activeLink} alt=""/>
-                    </NavLink></li> */}
-                <li><NavLink to={'/search'} activeClassName={s.active}>
-                    <img src="./icons/Search.png" alt=""/>
-                    <span className={s.line}></span>
-                    </NavLink></li>
-                {/* <li><NavLink to={'/profile'}>
-                    <img src="/icons/Profile.png" activeClassName={s.activeLink} alt=""/>
-                    </NavLink></li> */}
+                <li>
+                    <NavLink to={'/'} exact activeClassName={s.active}>
+                        <img src="./icons/Vector-2.svg" alt=""/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={'/collections'} activeClassName={s.active}>
+                        <img src="./icons/Vector-1.svg" alt=""/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={'/book'} activeClassName={s.active}>
+                        <img src="./icons/Vector.svg" alt=""/>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={'/search'} activeClassName={s.active}>
+                        <img src="./icons/Vector-3.svg" alt=""/>
+                    </NavLink>
+                </li>
             </ul>
         </div>
     )

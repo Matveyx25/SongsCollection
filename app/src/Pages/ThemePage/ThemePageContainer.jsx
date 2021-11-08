@@ -5,6 +5,7 @@ import { requestThemeSongs } from '../../redux/songs-reducer'
 import { getSongs } from '../../redux/songs-selectors'
 import { compose } from 'redux';
 import SongsContainer from '../../Components/Songs/SongsContainer'
+import Songs from '../../Components/Songs/Songs'
 
 class ThemePageContainer extends React.Component {
 
@@ -23,7 +24,7 @@ class ThemePageContainer extends React.Component {
     }
     
     render() {
-        return <SongsContainer songs={this.props.songs}/>
+        return <Songs songs={this.props.songs}/>
     }
 }
 

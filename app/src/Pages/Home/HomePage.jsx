@@ -9,7 +9,8 @@ import s from './HomePage.module.scss'
 const HomePage = props => {
     return (
         <div>
-            <SongsContainer/>
+           <BigCard/>
+           <BigCard/>
         </div>
     )
 }

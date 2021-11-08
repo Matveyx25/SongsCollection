@@ -1,3 +1,7 @@
+export const getResult = (state) => {
+    return state.songsPage.searchResults
+}
+
 export const getSongs = (state) => {
     return state.songsPage.songs
 }

@@ -4,10 +4,11 @@
 }
 
 .collectionWrapper li{
-    padding: 20px;
+    padding: 12px 24px;
     font-size: 18px;
-    border-radius: 4px;
-    background: #f8f7f7;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 17px -1px rgba(0, 0, 0, 0.09);
+    border-radius: 6px;
     list-style: none;
     transition: 0.5s;
 }
@@ -15,11 +16,11 @@
     background: #d4d3d3;
 }
 .collectionWrapper li:not(:last-child){
-    margin-bottom: 4px;
+    margin-bottom: 12px;
 }
 .collectionWrapper li a{
     text-decoration: none;
-    color: #736868;
+    color: #414450;
     position: relative;
     display: flex;
     justify-content: space-between;

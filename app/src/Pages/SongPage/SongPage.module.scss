@@ -1,6 +1,15 @@
 .title{
     font-size: 21px;
-    color: #7d7d7d;
+    color: #414450;
+    display: block;
+    margin: 20px 0;
+    font-family: 'Gilroy ExtraBold';
+}
+.mute{
+    font-size: 21px;
+    color: #414450;
+    opacity: .5;
+    text-align: center;
     display: block;
     margin: 20px 0;
     font-family: 'Gilroy ExtraBold';
@@ -9,7 +18,7 @@
     font-family: 'Gilroy Light';
     font-size: 18px;
     line-height: 21px;
-    color: #534747;
+    color: #414450;
     max-width: 100%;
 }
 .author{
@@ -18,7 +27,7 @@
     font-family: 'Gilroy Light';
     font-size: 14px;
     line-height: 21px;
-    color: #534747;
+    color: #414450;
     &::before{
         content: " ";
         width: 100%;
