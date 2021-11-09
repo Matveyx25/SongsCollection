@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import AddPage from './AddPage';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { addSong } from '../../redux/songs-reducer'

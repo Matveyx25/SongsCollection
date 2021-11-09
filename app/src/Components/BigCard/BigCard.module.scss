@@ -1,25 +1,31 @@
 .wrapper{
     margin: 20px 0;
     width: 100%;
-    padding: 20px 25px;
+    padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
     position: relative;
     color: #fff;
     overflow: hidden;
+    display: block;
+    text-decoration: none;
+    *{
+        text-decoration: none;
+    }
     .title{
         // font-family: Gilroy;
         font-style: normal;
         font-weight: 800;
-        font-size: 25px;
-        line-height: 31px;
+        font-size: 20px;
+        margin: 0;
     }
     .subtitle{
         // font-family: Gilroy;
         font-style: normal;
         font-weight: normal;
-        font-size: 24px;
-        line-height: 28px;
+        font-size: 20px;
+        margin: 0;
+        margin-top: 25px;
     }
     .backgroundCard{
         object-fit: cover;

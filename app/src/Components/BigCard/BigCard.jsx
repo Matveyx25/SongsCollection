@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom"
 
 const BigCard = props => {
     return (
-        <div className={s.wrapper}>
+        <NavLink className={s.wrapper} to={props.path}>
             <img src="/image8.png" className={s.backgroundCard}/>
-            <h1 className={s.title}>25 декабря</h1>
-            <h3 className={s.subtitle}>Рождество Христово</h3>
-        </div>
+            <h1 className={s.title}>{props.date}</h1>
+            <h3 className={s.subtitle}>{props.title}</h3>
+        </NavLink>
     )
 }
 
