@@ -54,11 +54,11 @@ class App extends Component {
 const AppContainer = compose(withRouter , connect(null))(App)
 
 const MainApp = props => {
-  return <BrowserRouter>
+  return <HashRouter>
     <Provider store={store}>
       <AppContainer/>
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 } 
 
 

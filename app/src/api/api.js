@@ -32,7 +32,7 @@ export const songsAPI = { // all quesion about songs and songs collection
         return instance.get(`songs?filter=${text}`)
     },
     addNewSong(obj){
-        return instance.post(`songs/addsong`, obj)
+        return instance.post(`songs/add`, obj)
     },
     getAllTheme(){
         return instance.get(`themes`)
