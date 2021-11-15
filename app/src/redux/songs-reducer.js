@@ -102,13 +102,28 @@ export const searchSong = (text) => {
     }
 }
 
-export const addSong = (obj) => {
-    return async (dispatch) => {
-        dispatch(toggleIsFetching(true))
-        let response = await songsAPI.addNewSong(obj)
+
+export const addSong = (obj) => (dispatch) => {
+    dispatch(toggleIsFetching(true))
+    songsAPI.addNewSong(obj).then(response => {
         console.log(response.data);
-        dispatch(toggleIsFetching(false))
-    }
+    }).catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+    
+      });
+    
+    dispatch(toggleIsFetching(false))
 }
 
 
