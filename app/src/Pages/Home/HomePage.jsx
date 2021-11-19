@@ -9,7 +9,7 @@ import s from './HomePage.module.scss'
 const HomePage = props => {
     return (
         <div>
-           <BigCard path={"/themes/39"} title={"Молодежное служение 2021"} date={"20 ноября"}/>
+           <BigCard path={"/themes/312"} title={"Церковь “Воскресение” г. Самара"} date={"Молодёжный вечер"}/>
         </div>
     )
 }
