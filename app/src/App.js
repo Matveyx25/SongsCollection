@@ -5,7 +5,6 @@ import NavigationContainer from './Components/Navigation/NavigationContainer';
 import HomePageContainer from './Pages/Home/HomePageContainer';
 import SearchPageContainer from './Pages/SearchPage/SearchPageContainer';
 import SongPageContainer from './Pages/SongPage/SongPageContainer';
-import AddPageContainer from './Pages/AddPage/AddPageContainer';
 import ProfilePageContainer from './Pages/Profile/ProfilePageContainer';
 import BookPageContainer from './Pages/Book/BookPageContainer';
 import { connect, Provider } from 'react-redux'
@@ -39,7 +38,6 @@ class App extends Component {
             <Route path='/book' render={() => <BookPageContainer/>} />
             <Route path='/search' render={() => <SearchPageContainer/>} />
             <Route path='/collections' render={() => <CollectionsContainer/>} />
-            <Route path='/add981832189song' render={() => <AddPageContainer/>} />
             <Route path='/themes/:themeId?' render={() => <ThemePageContainer/>} />
             <Route exact path='/' render={() => <HomePageContainer/>} />
             <Route path="*" render={() => <div className="error__not-found">404 NOT FOUND</div>} />
