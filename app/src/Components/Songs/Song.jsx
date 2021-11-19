@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 const Song = props => {
     return <li>
        <NavLink to={'/songs/' + props.song.id}>
-           <span className={s.number}>{ props.song.id }.</span>{ props.song.name }
+           <span className={s.number}>{ props.song.num }.</span>{ props.song.name }
         </NavLink>
      </li>
 }

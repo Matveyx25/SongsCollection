@@ -1,1 +1,47 @@
-.wrapper{margin:20px 0;width:100%;padding:20px;box-sizing:border-box;border-radius:10px;position:relative;color:#fff;overflow:hidden;display:block;text-decoration:none}.wrapper *{text-decoration:none}.wrapper .title{font-style:normal;font-weight:800;font-size:20px;margin:0}.wrapper .subtitle{font-style:normal;font-weight:normal;font-size:20px;margin:0;margin-top:25px}.wrapper .backgroundCard{-o-object-fit:cover;object-fit:cover;position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%}
+.wrapper {
+    margin: 20px 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    color: #1d242a;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+.wrapper * {
+    text-decoration: none;
+}
+.wrapper .title {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 19px;
+    margin: 0;
+}
+.wrapper .subtitle {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+    margin-top: 18px;
+}
+.wrapper .img {
+    width: 97px;
+    height: 104px;
+    background: url(.jpg);
+    filter: drop-shadow(1px 2px 6px rgba(0, 0, 0, 0.25));
+    border-radius: 3px;
+    position: relative;
+    float: left;
+    margin-right: 20px;
+}
+.wrapper .backgroundCard {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}

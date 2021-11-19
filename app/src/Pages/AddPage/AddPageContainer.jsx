@@ -13,7 +13,7 @@ const AddAPIComponent = props => {
             altName: null,
             text: data.text,
             authors: data.authors,
-            theme: 'Церковь'
+            theme: 'Молодежное Служение'
         }
         props.addSong(obj)
     }

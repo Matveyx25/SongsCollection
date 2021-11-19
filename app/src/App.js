@@ -28,7 +28,7 @@ class App extends Component {
           <span className="breadcrumps-line"></span>
           <div className="breadcrumps">
           <Switch>
-            <Route path='/songs/:songId?' render={() => <></>} />
+            <Route path='/songs/:songId?' render={() => <span></span>} />
             <Route path='/collections' render={() => <span>Темы</span>} />
             <Route exact path='/' render={() => <span>Подборки</span>} />
           </Switch> 
