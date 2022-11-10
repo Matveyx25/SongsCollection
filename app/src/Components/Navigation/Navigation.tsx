@@ -2,8 +2,7 @@ import React from 'react'
 import s from './Navigation.module.scss'
 import { NavLink } from "react-router-dom"
 
-
-const Navigation = props => {
+const Navigation = () => {
     return (
         <div className={s.wrapper}>
             <ul>
@@ -20,11 +19,6 @@ const Navigation = props => {
                 <li>
                     <NavLink to={'/book'} activeClassName={s.active}>
                         <img src="./icons/Vector.svg" alt=""/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to={'/search'} activeClassName={s.active}>
-                        <img src="./icons/Vector-3.svg" alt=""/>
                     </NavLink>
                 </li>
             </ul>

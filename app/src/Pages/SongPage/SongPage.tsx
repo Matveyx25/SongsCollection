@@ -1,9 +1,13 @@
 import React from 'react';
+import { SongType } from '../../redux/songs-reducer';
 import s from './SongPage.module.scss'
 
+type Props = {
+    song: SongType
+}
 
-const SongPage = props => {
-    if(props.song.id){
+const SongPage = (props: Props) => {
+    if(props?.song?.num){
         return (
             <div> 
                 <h1 className={s.title}>{props.song.num}. {props.song.name}</h1>

@@ -1,41 +1,27 @@
 import * as axios from 'axios'
 
 const instance = axios.create({
-    // withCredentials: true, 
-    baseURL : 'http://213.139.208.216:5000' // need change base url 
-    // headers: {"API-KEY" : "b93c13bf-3a25-43aa-aa7b-bce3a68057ff"} // and apikey if you have it 
+    // baseURL : 'http://213.139.208.216:5000' 
+    apiKey: "AIzaSyA73kt8GIlxafwzBFjqoMSZd_-3Te-OdyA",
+    baseURL: "https://songscollection-a32c7-default-rtdb.firebaseio.com/",
 })
 
-// export const usersAPI = {
-//     getUsers(currentPage = 1, pageSize = 10){
-//         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-//     },
-//     getUnFollow(userId){
-//         return instance.delete(`follow/${userId}`)
-//     },
-//     getFollow(userId){
-//         return instance.post(`follow/${userId}`)
-//     },
-//     getProfile(userId){
-//         return profileAPI.getProfile(userId)
-//     },
-// }
 
-export const songsAPI = { // all quesion about songs and songs collection
+export const songsAPI = { 
     getAllSongs(){
-        return instance.get(`songs`)
+        return instance.get(`songs.json`)
     },
     getSong(songId){
-        return instance.get(`songs?id=${songId}`)
+        return instance.get(`songs/${songId}.json`)
     },
     getSongFromText(text){
-        return instance.get(`songs?filter=${text}`)
+        return instance.get(`songs.json?filter=${text}`)
     },
     addNewSong(obj){
         return instance.post(`songs/add`, obj)
     },
     getAllTheme(){
-        return instance.get(`themes`)
+        return instance.get(`themes.json`)
     },
     getThemeSongs(themeId){
         return instance.get(`songs/${themeId}`)

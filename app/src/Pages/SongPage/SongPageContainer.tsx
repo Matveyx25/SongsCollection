@@ -2,22 +2,31 @@ import React from 'react'
 import SongPage from './SongPage'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { requestSong , toggleIsFetching} from '../../redux/songs-reducer'
+import { requestSong , SongType} from '../../redux/songs-reducer'
 import { getSong , getFetching} from '../../redux/songs-selectors'
 import { compose } from 'redux';
 import Preloader from '../../Components/common/preloader/preloader'
 
+type Properties = {
+    properties: SongType
+}
 
-class SongPageContainer extends React.Component {
+type Props = {
+    requestSong: (songId: number) => void
+    match: any,
+    isFetching: boolean,
+    song: Properties
+}
 
-
+class SongPageContainer extends React.Component<Props> {
     componentDidMount() {
         let songId = this.props.match.params.songId
+        console.log(songId);
         this.props.requestSong(songId)
     }
 
-    componentDidUpdate(prevProps , prevState , snapshot) {
-        if(this.props.match.params.songId != prevProps.match.params.songId){
+    componentDidUpdate(prevProps: Props) {
+        if(this.props.match.params.songId !== prevProps.match.params.songId){
             let songId = this.props.match.params.userId
             this.props.requestSong(songId)
             console.log(songId);
@@ -27,18 +36,18 @@ class SongPageContainer extends React.Component {
     render() {
         return <>
         {this.props.isFetching ? <Preloader/> : null}
-        <SongPage song={this.props.song}/>
+        <SongPage song={this.props.song.properties}/>
         </>
     }
 }
 
 
-let mapStateToProps = (state) => ({
+let mapStateToProps = (state: any) => ({
     isFetching: getFetching(state),
     song: getSong(state)
 })
 
 export default compose(
-    connect(mapStateToProps, { requestSong , toggleIsFetching}),
+    connect(mapStateToProps, {requestSong}),
     withRouter
 )(SongPageContainer)

@@ -1,9 +1,14 @@
 import React from 'react'
 import s from './BigCard.module.scss'
-import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom';
 
+type Props = {
+    path: string,
+    date: string,
+    title: string
+}
 
-const BigCard = props => {
+const BigCard = (props: Props) => {
     return (
         <NavLink className={s.wrapper} to={props.path}>
             <div className={s.img}>

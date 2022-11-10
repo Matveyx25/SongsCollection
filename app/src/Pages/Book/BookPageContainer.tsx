@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux';
+import { SongType } from '../../redux/songs-reducer';
 import { getSong } from '../../redux/songs-selectors'
 import SongPage from '../SongPage/SongPage';
 
-
-class BookPageContainer extends React.Component {
+class BookPageContainer extends React.Component<{song: SongType}> {
     
     render() {
         return (
@@ -15,7 +15,7 @@ class BookPageContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => ({
+let mapStateToProps = (state: any) => ({
     song: getSong(state)
 })
 

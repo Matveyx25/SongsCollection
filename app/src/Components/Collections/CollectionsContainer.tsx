@@ -2,13 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Collections from './Collections'
 import {compose} from "redux"
-import Preloader from '../common/preloader/preloader.js'
-import { requestCollections } from '../../redux/songs-reducer'
+import { requestCollections, ThemeType } from '../../redux/songs-reducer'
 import { getCollections } from '../../redux/songs-selectors'
 import { Component } from 'react'
+import Preloader from '../common/preloader/preloader'
 
+type Properties = {
+    properties: ThemeType,
+    id: number
+}
 
-class CollectionsAPIComponent extends Component {
+type Props = {
+    requestCollections: () => void,
+    isFetching: boolean,
+    collections: Array<Properties>
+}
+
+class CollectionsAPIComponent extends Component<Props> {
 
     componentDidMount() {
         this.props.requestCollections()
@@ -26,7 +36,7 @@ class CollectionsAPIComponent extends Component {
 }
 
 
-let mapStateToProps = state => {
+let mapStateToProps = (state: any) => {
     return {
         collections: getCollections(state)
     }

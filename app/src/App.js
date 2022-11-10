@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
 import './App.css';
-import {Route, withRouter, Switch, HashRouter, BrowserRouter} from "react-router-dom"
-import NavigationContainer from './Components/Navigation/NavigationContainer';
+import {Route, withRouter, Switch, HashRouter} from "react-router-dom"
 import HomePageContainer from './Pages/Home/HomePageContainer';
-import SearchPageContainer from './Pages/SearchPage/SearchPageContainer';
-import SongPageContainer from './Pages/SongPage/SongPageContainer';
-import ProfilePageContainer from './Pages/Profile/ProfilePageContainer';
 import BookPageContainer from './Pages/Book/BookPageContainer';
+import SongPageContainer from './Pages/SongPage/SongPageContainer';
 import { connect, Provider } from 'react-redux'
 import { compose } from 'redux'
 import store from './redux/store'
 import CollectionsContainer from './Components/Collections/CollectionsContainer';
 import ThemePageContainer from './Pages/ThemePage/ThemePageContainer';
+import { initializeApp } from "firebase/app";
+import Navigation from './Components/Navigation/Navigation';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA73kt8GIlxafwzBFjqoMSZd_-3Te-OdyA",
+  authDomain: "songscollection-a32c7.firebaseapp.com",
+  databaseURL: "https://songscollection-a32c7-default-rtdb.firebaseio.com",
+  projectId: "songscollection-a32c7",
+  storageBucket: "songscollection-a32c7.appspot.com",
+  messagingSenderId: "602606518948",
+  appId: "1:602606518948:web:0fba78267cf8ed9e87dc31"
+};
+
+const fbApp = initializeApp(firebaseConfig);
 
 class App extends Component {
   componentDidMount(){
@@ -25,25 +36,16 @@ class App extends Component {
       <div>
         <div className="container">
           <span className="breadcrumps-line"></span>
-          <div className="breadcrumps">
           <Switch>
-            <Route path='/songs/:songId?' render={() => <span></span>} />
-            <Route path='/collections' render={() => <span>Темы</span>} />
-            <Route exact path='/' render={() => <span>Подборки</span>} />
-          </Switch> 
-          </div>
-          <Switch>
-            <Route path='/profile' render={() => <ProfilePageContainer/>} />
             <Route path='/songs/:songId?' render={() => <SongPageContainer/>} />
             <Route path='/book' render={() => <BookPageContainer/>} />
-            <Route path='/search' render={() => <SearchPageContainer/>} />
             <Route path='/collections' render={() => <CollectionsContainer/>} />
             <Route path='/themes/:themeId?' render={() => <ThemePageContainer/>} />
             <Route exact path='/' render={() => <HomePageContainer/>} />
             <Route path="*" render={() => <div className="error__not-found">404 NOT FOUND</div>} />
           </Switch>
         </div>
-        <NavigationContainer/>
+        <Navigation/>
       </div>
     );
   } 
