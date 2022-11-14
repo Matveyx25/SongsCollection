@@ -48,6 +48,24 @@ body{
     padding-top: 40px;
     min-height: 100vh;
 }
+.themes-wrapper{
+    margin-top: 32px;
+    margin-bottom: 20px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 1px 4px 17px -1px rgba(0, 0, 0, 0.09);
+    border-radius: 6px;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 18px;
+    padding: 16px;
+}
+.themes-wrapper div{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    padding: 8px 0;
+}
 .search-wrapper{
     margin-top: 32px;
     margin-bottom: 20px;

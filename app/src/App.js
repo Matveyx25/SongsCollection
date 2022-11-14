@@ -11,6 +11,7 @@ import CollectionsContainer from './Components/Collections/CollectionsContainer'
 import ThemePageContainer from './Pages/ThemePage/ThemePageContainer';
 import { initializeApp } from "firebase/app";
 import Navigation from './Components/Navigation/Navigation';
+import AddPageContainer from './Pages/AddPage/AddPageContainer';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA73kt8GIlxafwzBFjqoMSZd_-3Te-OdyA",
@@ -38,6 +39,7 @@ class App extends Component {
           <span className="breadcrumps-line"></span>
           <Switch>
             <Route path='/songs/:songId?' render={() => <SongPageContainer/>} />
+            <Route path='/add' render={() => <AddPageContainer/>} />
             <Route path='/book' render={() => <BookPageContainer/>} />
             <Route path='/collections' render={() => <CollectionsContainer/>} />
             <Route path='/themes/:themeId?' render={() => <ThemePageContainer/>} />

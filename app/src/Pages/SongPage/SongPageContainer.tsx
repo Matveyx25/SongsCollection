@@ -7,15 +7,11 @@ import { getSong , getFetching} from '../../redux/songs-selectors'
 import { compose } from 'redux';
 import Preloader from '../../Components/common/preloader/preloader'
 
-type Properties = {
-    properties: SongType
-}
-
 type Props = {
     requestSong: (songId: number) => void
     match: any,
     isFetching: boolean,
-    song: Properties
+    song: SongType
 }
 
 class SongPageContainer extends React.Component<Props> {
@@ -36,7 +32,7 @@ class SongPageContainer extends React.Component<Props> {
     render() {
         return <>
         {this.props.isFetching ? <Preloader/> : null}
-        <SongPage song={this.props.song.properties}/>
+        <SongPage song={this.props.song}/>
         </>
     }
 }

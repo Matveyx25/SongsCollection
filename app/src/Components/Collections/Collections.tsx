@@ -3,13 +3,9 @@ import { ThemeType } from '../../redux/songs-reducer'
 import Collection from './Collection'
 import s from './Collection.module.css'
 
-type Properties = {
-    properties: ThemeType,
-    id: number
-}
 
 type Props = {
-    collections: Array<Properties>
+    collections: Array<ThemeType>
 }
 
 const Collections: FC<Props> = (props) => {

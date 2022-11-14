@@ -1,12 +1,14 @@
 import { songsAPI } from "../api/api"
 
 const SET_SONGS = 'SET_SONGS'
+const SET_SONGS_NUMS = 'SET_SONGS_NUMS'
 const SET_SONG = 'SET_SONG'
 const SET_COLLECTIONS = 'SET_COLLECTIONS'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 let initialState = {
     songs: [] as Array<SongType>,
+    songsNums: [] as Array<string>,
     song: {} as SongType,
     collections: [] as Array<ThemeType>,
     isFetching: false
@@ -19,6 +21,8 @@ const songsReducer = (state: InitialStateType = initialState, action: any): Init
     switch (action.type) {
         case SET_SONGS:
             return { ...state, songs: action.songs}
+        case SET_SONGS_NUMS:
+            return { ...state, songsNums: action.songsNums}
         case SET_SONG:
             return { ...state, song: action.song}
         case SET_COLLECTIONS:
@@ -51,6 +55,10 @@ type setSongsActionType = {
     type: typeof SET_SONGS,
     songs: Array<SongType>
 }
+type setSongsNumsActionType = {
+    type: typeof SET_SONGS_NUMS,
+    songsNums: Array<number> 
+}
 type setSongActionType = {
     type: typeof SET_SONG,
     song: SongType
@@ -67,6 +75,7 @@ type toggleIsFetchingActionType = {
 // ACTION CREATOR
 
 export const setSongs = (songs: Array<SongType>): setSongsActionType => ({ type: SET_SONGS, songs })
+export const setSongsNums = (songsNums: Array<number>): setSongsNumsActionType => ({ type: SET_SONGS_NUMS, songsNums })
 export const setSong = (song: SongType): setSongActionType => ({ type: SET_SONG, song})
 export const setCollections = (collections: Array<ThemeType>): setCollectionsActionType => ({ type: SET_COLLECTIONS, collections })
 export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingActionType => ({ type: TOGGLE_IS_FETCHING, isFetching })
@@ -89,25 +98,65 @@ export const requestThemeSongs = (themeId: number) => {
         dispatch(toggleIsFetching(true))
 
         let response = await songsAPI.getThemeSongs(themeId)
+
+        dispatch(setSongsNums(response.data.song_nums.length ? 
+            response.data.song_nums.split(',') : []))
+        dispatch(toggleIsFetching(false))
+    }
+}
+
+export const requestThemeSongsContain = (themeId: string) => {
+    return async (dispatch: any) => {
+        dispatch(toggleIsFetching(true))
+
+        let response = await songsAPI.getAllSongs()
+        let data = (<any>Object).values(response.data)
+
+        let songs: Array<SongType> = data.filter((song: any) => song.theme?.includes(themeId))
+        console.log(songs);
         
-        dispatch(setSongs(response.data))
+        dispatch(setSongs(songs))
         dispatch(toggleIsFetching(false))
     }
 }
 
 export const requestSong = (songId: number) => async (dispatch: any) => {
     dispatch(toggleIsFetching(true))
-    let response = await songsAPI.getSong(songId - 1)
+    let response = await songsAPI.getSong(songId)
 
-    dispatch(setSong(response.data))   
+    let arrRequest: SongType = response.data[Object.keys(response.data)[0]]
+
+    dispatch(setSong(arrRequest))
     dispatch(toggleIsFetching(false)) 
 }
+
+
 
 export const requestCollections = () => async (dispatch: any) => {
     dispatch(toggleIsFetching(true))
     let response = await songsAPI.getAllTheme()
+    dispatch(setCollections(response.data))
+    dispatch(toggleIsFetching(false))
+}
 
-    dispatch(setCollections(response.data.features))
+
+export const addCollection = (obj: Object) => (dispatch: any) => {
+    dispatch(toggleIsFetching(true))
+    songsAPI.addNewCollection(obj).then((response: any) => {
+        console.log(response.data);
+    }).catch(function (error: any) {
+          console.log(error);
+      });
+    dispatch(toggleIsFetching(false))
+}
+
+export const addToCollection = (id: number, obj: string) => (dispatch: any) => {
+    dispatch(toggleIsFetching(true))    
+    songsAPI.addToCollection(id, obj).then((response: any) => {
+        console.log(response.data);
+    }).catch(function (error: any) {
+          console.log(error);
+      });
     dispatch(toggleIsFetching(false))
 }
 
@@ -116,18 +165,8 @@ export const addSong = (obj: any) => (dispatch: any) => {
     songsAPI.addNewSong(obj).then((response: any) => {
         console.log(response.data);
     }).catch(function (error: any) {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log('Error', error.message);
-        }
-    
-      });
-    
+        console.log(error);
+    });
     dispatch(toggleIsFetching(false))
 }
 

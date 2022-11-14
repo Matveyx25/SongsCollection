@@ -1,31 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { requestThemeSongs, SongType } from '../../redux/songs-reducer'
+import { requestThemeSongsContain, SongType } from '../../redux/songs-reducer'
 import { getSongs } from '../../redux/songs-selectors'
 import { compose } from 'redux';
 import Songs from '../../Components/Songs/Songs'
 
-type Properties = {
-    properties: SongType
-}
-
 type Props = {
     match: any,
-    requestThemeSongs: (themeId: number) => void,
-    songs: Array<Properties>
+    requestThemeSongsContain: (themeId: string) => void,
+    songs: Array<SongType>
 }
 
 class ThemePageContainer extends React.Component<Props> {
     componentDidMount() {
         let themeId = this.props.match.params.themeId
-        this.props.requestThemeSongs(themeId)
+        this.props.requestThemeSongsContain(themeId)
     }
 
     componentDidUpdate(prevProps: Props) {
         if(this.props.match.params.themeId != prevProps.match.params.themeId){
             let themeId = this.props.match.params.themeId
-            this.props.requestThemeSongs(themeId)
+            this.props.requestThemeSongsContain(themeId)
             console.log(themeId);
         }
     }
@@ -41,6 +37,6 @@ let mapStateToProps = (state: any) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, { requestThemeSongs }),
+    connect(mapStateToProps, { requestThemeSongsContain }),
     withRouter
 )(ThemePageContainer)

@@ -12,19 +12,28 @@ export const songsAPI = {
         return instance.get(`songs.json`)
     },
     getSong(songId){
-        return instance.get(`songs/${songId}.json`)
+        return instance.get(`songs.json?orderBy=\"num\"&equalTo=${songId}`)
     },
     getSongFromText(text){
         return instance.get(`songs.json?filter=${text}`)
     },
     addNewSong(obj){
-        return instance.post(`songs/add`, obj)
+        return instance.post(`songs.json`, obj)
+    },
+    addToCollection(id, obj){
+        return instance.patch(`themes/${id}/.json`, {"song_nums": obj})
+    },
+    addNewCollection(obj){
+        return instance.post(`themes.json`, obj)
     },
     getAllTheme(){
         return instance.get(`themes.json`)
     },
     getThemeSongs(themeId){
-        return instance.get(`songs/${themeId}`)
+        return instance.get(`themes/${themeId}.json`)
+    },
+    getThemeSongsContain(theme){
+        return instance.get(`songs.json?orderBy=\"theme\"&equalTo=${theme}`)
     }
 }
 

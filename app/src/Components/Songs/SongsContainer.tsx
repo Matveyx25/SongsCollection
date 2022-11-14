@@ -6,13 +6,9 @@ import { requestSongs, SongType } from '../../redux/songs-reducer'
 import { getSongs , getFetching } from '../../redux/songs-selectors'
 import { Component } from 'react'
 
-type Properties = {
-    properties: SongType
-}
-
 type Props = {
     isFetching: boolean,
-    songs: Array<Properties>,
+    songs: Array<SongType>,
     requestSongs: () => void,
     searchValue: string
 }

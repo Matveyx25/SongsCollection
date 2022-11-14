@@ -7,15 +7,10 @@ import { getCollections } from '../../redux/songs-selectors'
 import { Component } from 'react'
 import Preloader from '../common/preloader/preloader'
 
-type Properties = {
-    properties: ThemeType,
-    id: number
-}
-
 type Props = {
     requestCollections: () => void,
     isFetching: boolean,
-    collections: Array<Properties>
+    collections: Array<ThemeType>
 }
 
 class CollectionsAPIComponent extends Component<Props> {
