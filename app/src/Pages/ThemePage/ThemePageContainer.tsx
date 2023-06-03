@@ -5,6 +5,7 @@ import { requestThemeSongsContain, SongType } from '../../redux/songs-reducer'
 import { getSongs } from '../../redux/songs-selectors'
 import { compose } from 'redux';
 import Songs from '../../Components/Songs/Songs'
+import { AppStateType } from '../../redux/store'
 
 type Props = {
     match: any,
@@ -32,7 +33,7 @@ class ThemePageContainer extends React.Component<Props> {
 }
 
 
-let mapStateToProps = (state: any) => ({
+let mapStateToProps = (state: AppStateType) => ({
     songs: getSongs(state)
 })
 

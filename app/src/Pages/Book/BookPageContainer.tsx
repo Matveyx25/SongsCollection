@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { compose } from 'redux';
 import { SongType } from '../../redux/songs-reducer';
 import { getSong } from '../../redux/songs-selectors'
+import { AppStateType } from '../../redux/store';
 import SongPage from '../SongPage/SongPage';
 
 class BookPageContainer extends React.Component<{song: SongType}> {
@@ -15,7 +16,7 @@ class BookPageContainer extends React.Component<{song: SongType}> {
     }
 }
 
-let mapStateToProps = (state: any) => ({
+let mapStateToProps = (state: AppStateType) => ({
     song: getSong(state)
 })
 

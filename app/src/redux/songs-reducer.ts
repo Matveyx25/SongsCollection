@@ -1,3 +1,4 @@
+import { Dispatch } from "redux"
 import { songsAPI } from "../api/api"
 
 const SET_SONGS = 'SET_SONGS'
@@ -8,7 +9,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 let initialState = {
     songs: [] as Array<SongType>,
-    songsNums: [] as Array<string>,
+    songsNums: [] as Array<number>,
     song: {} as SongType,
     collections: [] as Array<ThemeType>,
     isFetching: false
@@ -16,7 +17,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState
 
-const songsReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
+const songsReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
 
     switch (action.type) {
         case SET_SONGS:
@@ -33,6 +34,11 @@ const songsReducer = (state: InitialStateType = initialState, action: any): Init
             return state
     }
 }
+
+type ActionsType = setSongsActionType | setSongsNumsActionType | 
+setSongActionType | setCollectionsActionType | toggleIsFetchingActionType
+
+type DispatchType = Dispatch<ActionsType>
 
 export type SongType = {
     authors?: string,
@@ -80,10 +86,10 @@ export const setSong = (song: SongType): setSongActionType => ({ type: SET_SONG,
 export const setCollections = (collections: Array<ThemeType>): setCollectionsActionType => ({ type: SET_COLLECTIONS, collections })
 export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingActionType => ({ type: TOGGLE_IS_FETCHING, isFetching })
 
-// THUNK
+// THUNKs
 
 export const requestSongs = () => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         dispatch(toggleIsFetching(true))
 
         let response = await songsAPI.getAllSongs()        
@@ -94,19 +100,18 @@ export const requestSongs = () => {
 }
 
 export const requestThemeSongs = (themeId: number) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         dispatch(toggleIsFetching(true))
 
         let response = await songsAPI.getThemeSongs(themeId)
 
-        dispatch(setSongsNums(response.data.song_nums.length ? 
-            response.data.song_nums.split(',') : []))
+        dispatch(setSongsNums(response.data.song_nums.length ? response.data.song_nums.split(',') : []))
         dispatch(toggleIsFetching(false))
     }
 }
 
 export const requestThemeSongsContain = (themeId: string) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         dispatch(toggleIsFetching(true))
 
         let response = await songsAPI.getAllSongs()
@@ -120,7 +125,7 @@ export const requestThemeSongsContain = (themeId: string) => {
     }
 }
 
-export const requestSong = (songId: number) => async (dispatch: any) => {
+export const requestSong = (songId: number) => async (dispatch: DispatchType) => {
     dispatch(toggleIsFetching(true))
     let response = await songsAPI.getSong(songId)
 
@@ -132,7 +137,7 @@ export const requestSong = (songId: number) => async (dispatch: any) => {
 
 
 
-export const requestCollections = () => async (dispatch: any) => {
+export const requestCollections = () => async (dispatch: DispatchType) => {
     dispatch(toggleIsFetching(true))
     let response = await songsAPI.getAllTheme()
     dispatch(setCollections(response.data))
@@ -140,7 +145,7 @@ export const requestCollections = () => async (dispatch: any) => {
 }
 
 
-export const addCollection = (obj: Object) => (dispatch: any) => {
+export const addCollection = (obj: ThemeType) => (dispatch: DispatchType) => {
     dispatch(toggleIsFetching(true))
     songsAPI.addNewCollection(obj).then((response: any) => {
         console.log(response.data);
@@ -150,7 +155,7 @@ export const addCollection = (obj: Object) => (dispatch: any) => {
     dispatch(toggleIsFetching(false))
 }
 
-export const addToCollection = (id: number, obj: string) => (dispatch: any) => {
+export const addToCollection = (id: number, obj: string) => (dispatch: DispatchType) => {
     dispatch(toggleIsFetching(true))    
     songsAPI.addToCollection(id, obj).then((response: any) => {
         console.log(response.data);
@@ -160,7 +165,7 @@ export const addToCollection = (id: number, obj: string) => (dispatch: any) => {
     dispatch(toggleIsFetching(false))
 }
 
-export const addSong = (obj: any) => (dispatch: any) => {
+export const addSong = (obj: any) => (dispatch: DispatchType) => {
     dispatch(toggleIsFetching(true))
     songsAPI.addNewSong(obj).then((response: any) => {
         console.log(response.data);

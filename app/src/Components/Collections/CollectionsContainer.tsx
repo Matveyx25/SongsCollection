@@ -6,6 +6,7 @@ import { requestCollections, ThemeType } from '../../redux/songs-reducer'
 import { getCollections } from '../../redux/songs-selectors'
 import { Component } from 'react'
 import Preloader from '../common/preloader/preloader'
+import { AppStateType } from '../../redux/store'
 
 type Props = {
     requestCollections: () => void,
@@ -31,7 +32,7 @@ class CollectionsAPIComponent extends Component<Props> {
 }
 
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         collections: getCollections(state)
     }

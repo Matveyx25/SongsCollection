@@ -1,49 +1,50 @@
-import * as axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
+import { SongType, ThemeType } from '../redux/songs-reducer'
 
 const instance = axios.create({
     // baseURL : 'http://213.139.208.216:5000' 
-    apiKey: "AIzaSyA73kt8GIlxafwzBFjqoMSZd_-3Te-OdyA",
+    // apiKey: "AIzaSyA73kt8GIlxafwzBFjqoMSZd_-3Te-OdyA",
     baseURL: "https://songscollection-a32c7-default-rtdb.firebaseio.com/",
+    headers: {
+        "API-KEY": "AIzaSyA73kt8GIlxafwzBFjqoMSZd_-3Te-OdyA"
+    }
 })
 
+export enum ResultCodesEnum {
+    Success = 200,
+    Error = 404
+}
 
 export const songsAPI = { 
     getAllSongs(){
         return instance.get(`songs.json`)
     },
-    getSong(songId){
+    getSong(songId: number){
         return instance.get(`songs.json?orderBy=\"num\"&equalTo=${songId}`)
     },
-    getSongFromText(text){
+    getSongFromText(text: string){
         return instance.get(`songs.json?filter=${text}`)
     },
-    addNewSong(obj){
+    addNewSong(obj: SongType){
         return instance.post(`songs.json`, obj)
     },
-    addToCollection(id, obj){
+    addToCollection(id: number, obj: string){
         return instance.patch(`themes/${id}/.json`, {"song_nums": obj})
     },
-    addNewCollection(obj){
+    addNewCollection(obj: ThemeType){
         return instance.post(`themes.json`, obj)
     },
     getAllTheme(){
         return instance.get(`themes.json`)
     },
-    getThemeSongs(themeId){
+    getThemeSongs(themeId: number){
         return instance.get(`themes/${themeId}.json`)
     },
-    getThemeSongsContain(theme){
+    getThemeSongsContain(theme: string){
         return instance.get(`songs.json?orderBy=\"theme\"&equalTo=${theme}`)
     }
 }
 
-export const authAPI = {
-    me () { return instance.get(`auth/me`) },
-    login (email , password , rememberMe = false,
-         captcha = null){return instance.post(`auth/login`,
-          {email , password , rememberMe, captcha})},
-    logout (){return instance.delete(`auth/login`)}
-}
 export const securityAPI = {
     getCaptcha () { 
         return instance.get(`security/get-captcha-url`)

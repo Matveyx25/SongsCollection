@@ -6,6 +6,7 @@ import { requestSong , SongType} from '../../redux/songs-reducer'
 import { getSong , getFetching} from '../../redux/songs-selectors'
 import { compose } from 'redux';
 import Preloader from '../../Components/common/preloader/preloader'
+import { AppStateType } from '../../redux/store'
 
 type Props = {
     requestSong: (songId: number) => void
@@ -38,7 +39,7 @@ class SongPageContainer extends React.Component<Props> {
 }
 
 
-let mapStateToProps = (state: any) => ({
+let mapStateToProps = (state: AppStateType) => ({
     isFetching: getFetching(state),
     song: getSong(state)
 })

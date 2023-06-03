@@ -1,6 +1,5 @@
 import { combineReducers , createStore, applyMiddleware, compose  } from "redux"
 import thunkMiddlewere from "redux-thunk"
-// import { reducer as formReducer } from "redux-form"
 
 import appReducer from "./app-reducer"
 import songsReducer from "./songs-reducer"
@@ -10,13 +9,16 @@ let reducers = combineReducers({
     app: appReducer
 });
 
+type reducersType = typeof reducers
+export type AppStateType = ReturnType<reducersType>
 
-
+// @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(
     applyMiddleware(thunkMiddlewere)
   ))
-
+  
+// @ts-ignore
 window.store = store
 
 export default store
