@@ -15,13 +15,35 @@
     transition: 0.2s;
     color: #414450;
 }
+.list{
+	padding: 0;
+}
+.tags{
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+.tag{
+	padding: 4px 8px;
+	border-radius: 4px;
+	background: #414450;
+	color: #fff;
+	font-size: 12px;
+}
+.listTitle{
+	font-size: 16px;
+}
 .songsWrapper li a{
-    display: inline-block;
-    width: fit-content;
     text-decoration: none;
     color: #414450;
     padding: 0;
     margin: 0;
+		width: 100% !important;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 }
 .notResult{
     display: block;
@@ -30,4 +52,42 @@
     opacity: 0.2;
     color: #333;
     font-size: 20px;
+}
+
+.filtersList{
+	display: flex;
+	gap: 8px;
+}
+.filterWrapper{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #888;
+	margin-bottom: 12px;
+}
+.filterChevron{
+	transition: .6s;
+}
+.filterChevron.active{
+	transform: rotate(-180deg);
+}
+.filterHeader{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+.filterButton{
+	padding: 4px 8px;
+	border-radius: 4px;
+	color: #333;
+	width: fit-content;
+	background: none;
+	border: none;
+}
+.filterButton.active{
+	background: #414450;
+	color: #fff;
 }

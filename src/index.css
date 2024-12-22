@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Toastify__toast{
+	min-height: 0 !important;
+	padding: 16px !important;
+	border-radius: 16px !important;
+	box-shadow: 0px 4px 20px 0px rgba(212, 217, 222, 0.25) !important;
+	border: 1px solid rgba(233, 234, 234, 1) !important;
+}
+.Toastify__toast-body {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	font-size: 16px !important;
+	font-weight: 500 !important;
+	line-height: 24px !important;
+	letter-spacing: 0.02em !important;
+} 
+.Toastify__toast-icon{
+	width: 18px !important;
+	margin-right: 20px !important;
+}
+.Toastify__close-button > svg{
+	width: 18px !important;
+	height: 18px !important;
+	margin-top: 3px !important;
+}

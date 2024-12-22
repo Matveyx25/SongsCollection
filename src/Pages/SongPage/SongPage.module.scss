@@ -2,8 +2,8 @@
     font-size: 21px;
     color: #414450;
     display: block;
-    margin: 20px 0;
     font-family: 'Gilroy ExtraBold';
+		margin: 0;
 }
 .mute{
     font-size: 21px;
@@ -13,6 +13,29 @@
     display: block;
     margin: 20px 0;
     font-family: 'Gilroy ExtraBold';
+}
+.header{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0;
+	align-items: start;
+}
+.copyBtn{
+	background: none;
+	border: none;
+	border-radius: 8px;
+	border: 1px solid #888;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	&:active{
+		transition: .4s opacity;
+		opacity: .5;
+	}
 }
 .text{
     font-family: 'Gilroy Light';
